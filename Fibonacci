@@ -1,27 +1,45 @@
-
-package fibonacci;
+package reverseoffibonacci;
+import java.util.InputMismatchException;
 import java.util.Scanner;
-
-public class Fibonacci {
-    
-    private static Scanner scanner = new Scanner (System.in);
-
-    public static void main(String[] args) {
-        
-        System.out.print("Input : ");
-        int input = scanner.nextInt();
-        int fib = 1;
-        System.out.print ("1 1 ");
-        
-        int temp;
-        int fib2 = 1;
-        for(int i = 2 ; i<input; i++){
-            temp = fib + fib2;
-            System.out.print(temp + " ");
-            fib = fib2;
-            fib2 = temp;
-        }
-    
+public class ReverseOfFibonacci {
+    Scanner scan;
+    int a1, b1, c1, a2, b2, c2, limit, i;
+    public ReverseOfFibonacci() {
+        scan = new Scanner(System.in);
+        a1 = c1 = 1;
+        b1 = a2 = b2 = c2 = limit = i = 0;
     }
-    
+    public void input() {
+        try {
+            System.out.printf("Enter limit: ");
+            limit = scan.nextInt();
+            scan.close();
+        } catch (InputMismatchException | NumberFormatException e) {
+            System.err.println("Error Occurred!");
+            System.exit(0);
+        }
+    }
+    public void compute() {
+        for (; i < limit; i++) {
+            a1 = b1;
+            b1 = c1;
+            c1 = a1 + b1;
+            a2 = c1;
+            c2 = b1;
+        }
+        System.out.println("Series in Reverse Order:");
+        System.out.println(a2 + "\n" + c2);
+        for (i = limit - 1; i >= 0; i--) {
+            b2 = a2;
+            a2 = c2;
+            c2 = b2 - a2;
+            System.out.println(c2);
+        }
+    }
+    public static void main(String[] args) {
+        ReverseOfFibonacci fr = new ReverseOfFibonacci();
+        fr.input();
+        fr.compute();
+    }
 }
+   
