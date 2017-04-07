@@ -1,27 +1,26 @@
-
-package fibonacci;
+package modifiedsumoffibonacci;
 import java.util.Scanner;
 
-public class Fibonacci {
+public class ModifiedSumOfFibonacci {
     
     private static Scanner scanner = new Scanner (System.in);
 
     public static void main(String[] args) {
-        
-        System.out.print("Input : ");
+       
+        System.out.print("Input :");
         int input = scanner.nextInt();
         int fib = 1;
-        System.out.print ("1 1 ");
-        
+        int jumlah = 2;
         int temp;
         int fib2 = 1;
-        for(int i = 2 ; i<input; i++){
+        for( int i = 2 ; i < input ; i++){
             temp = fib + fib2;
-            System.out.print(temp + " ");
+            jumlah = jumlah + temp;
             fib = fib2;
             fib2 = temp;
         }
-    
+        System.out.print("Output : ");
+        System.out.println(jumlah);
     }
     
 }
